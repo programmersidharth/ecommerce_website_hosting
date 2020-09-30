@@ -1,0 +1,99 @@
+{% extends 'shop/base.html'%}
+{% block body %}
+  {%load static %}
+
+
+    <div class="hero-wrap hero-bread" style="background-image: url( {% static 'assets/images/bg_1.jpg'%});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+            <h1 class="mb-0 bread">Products</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+        <div class="container">
+ <div id="alerts"></div>
+            <div class="row">
+                {% for product in product %}
+                <div class="col-md-6 col-lg-3 ftco-animate">
+
+                    <div class="product">
+                        <a href="\product_single\{{ product.product_id }}" class="img-prod"><img class="img-fluid" src="/media/{{ product.image }}"  style="height: 300px; width: 100%;" alt="Colorlib Template">
+                            <span class="status">{{ product.discount_percentage }}%</span>
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="\product_single\{{ product.product_id }}">{{ product.product_name }}</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+<p class="price"><span class="price-sale">Rs{{ product.price }} Kg</span></p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+
+                                    <a href="\product_single\{{ product.product_id }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="\product_single\{{ product.product_id }}" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                   {% if product.has_previous %}
+                <li><a href="?page={{product.previous_page_number}}">&lt;</a></li>
+                {% else %}
+                <li class="disabled"><a href="javascript:void(0);">&lt;</a></li>
+                {% endif %}
+
+
+                <li class="active"><span>{{ product.number }}</span></li>
+
+
+                 {% if product.has_next %}
+                <li><a href="?page={{product.next_page_number}}">&gt;</a></li>
+                   {% else %}
+                <li class="disabled"><a href="javascript:void(0);">&gt;</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+    </section>
+
+        <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+            <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+            <span>Get e-mail updates about our latest shops and special offers</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="\product_single\{{ product.product_id }}" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Enter email address">
+                <input type="submit" value="Subscribe" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+ {% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'shop/base.html'%}
+{% block body %}
+  {%load static %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url( {% static 'assets/images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-0 bread">Blog</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+						<h2 class="mb-3">{{blog.blog_head }}</h2>
+
+              <img src="/media/{{ blog.blog_image }}" alt="" class="img-fluid" style="height: 400px;width: 100%"><br><br>
+             <p>{{ blog.blo_content|slice:"0:405"| safe }}....</p>
+            <p>{{ blog.blo_content|slice:"405:"| safe }}</p>
+
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">Life</a>
+                <a href="#" class="tag-cloud-link">Sport</a>
+                <a href="#" class="tag-cloud-link">Tech</a>
+                <a href="#" class="tag-cloud-link">Travel</a>
+              </div>
+            </div>
+            
+            <div class="about-author d-flex p-4 bg-light">
+              <div class="bio align-self-md-center mr-4">
+                <img src="/media/{{ blog.blog_teacher_image }}" alt="Image placeholder" class="img-fluid mb-4">
+              </div>
+              <div class="desc align-self-md-center">
+                <h3>{{ blog.blog_teacher }}</h3>
+                <p>{{ blog.blog_teacher_content }}</p>
+              </div>
+            </div>
+
+
+            <div class="pt-5 mt-5">
+             
+              
+              <!-- END comment-list -->
+              
+           
+            </div>
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon ion-ios-search"></span>
+                  <input type="text" class="form-control" placeholder="Search...">
+                </div>
+              </form>
+          
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading">Paragraph</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+ {% endblock %}
